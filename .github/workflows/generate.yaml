@@ -36,7 +36,7 @@ jobs:
           echo "generator-version: ${{ github.event.inputs.generator-version }}"
           echo "target-organization: ${{ github.event.inputs.target-organization }}"
           echo "target-repository: ${{ github.event.inputs.target-repository }}"
-          echo "::set-env name=generator-organization::${{ github.event.inputs.generator-organization }}"
+          echo "::set-env name=GEN_ORG::${{ github.event.inputs.generator-organization }}"
           echo "::set-env name=generator-repository::${{ github.event.inputs.generator-repository }}"
           echo "::set-env name=generator-version::${{ github.event.inputs.generator-version }}"
           echo "::set-env name=target-organization::${{ github.event.inputs.target-organization }}"
@@ -44,7 +44,7 @@ jobs:
         fi
         echo "merge-bot is called with the following parameters"
         echo "generator to be used"
-        echo "  generator.organization: ${{ env.generator-organization }}"
+        echo "  generator.organization: ${{ env.GEN_ORG }}"
         echo "  generator.repository:   ${{ env.generator-repository }}"
         echo "  generator.version:      ${{ env.generator-version }}"
         echo "target repository to which the pull request should be applied"
