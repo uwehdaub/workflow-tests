@@ -1,0 +1,39 @@
+name: merge-bot
+on:
+  repository_dispatch:
+    types: ["generate"]
+  workflow_dispatch:
+    inputs:
+      generator-organization:
+        description: 'Organization, where the generator repository is located in'
+        required: true
+        default: 'metronom-gmbh'
+      generator-repository:
+        description: 'Repository, where the generator is located in'
+        required: true
+        default: 'lpx-workflow-generator'
+      generator-version:
+        description: 'Version (tag/branch) of the generator to be used'
+        required: true
+        default: 'master'
+      target-organization:
+        description: 'Organization, where the target repository is located in'
+        required: true
+        default: 'developer-experience'
+      target-repository:
+        description: 'Target repository'
+        required: true
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+    - name: greating
+      run: | 
+        echo "merge-bot is called with the following parameters"
+        echo "generator to be used"
+        echo "  generator.organization: ${{ github.event.client_payload.generator.organization }}"
+        echo "  generator.repository:   ${{ github.event.client_payload.generator.repository }}"
+        echo "  generator.version:      ${{ github.event.client_payload.generator.version }}"
+        echo "target repository to which the pull request should be applied"
+        echo "  target organization:    ${{ github.event.client_payload.organization }}"
+        echo "  target repository:      ${{ github.event.client_payload.repository }}"
