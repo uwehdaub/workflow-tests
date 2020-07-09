@@ -1,4 +1,4 @@
-name: merge-bot
+name: test-workflow-dispatch
 on:
   repository_dispatch:
     types: ["generate"]
