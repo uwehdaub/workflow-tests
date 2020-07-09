@@ -5,19 +5,19 @@ on:
   workflow_dispatch:
     inputs:
       generator-organization:
-        description: 'Organization, where the generator repository is located in'
+        description: 'Generator organization'
         required: true
         default: 'metronom-gmbh'
       generator-repository:
-        description: 'Repository, where the generator is located in'
+        description: 'Generator repository'
         required: true
         default: 'lpx-workflow-generator'
       generator-version:
-        description: 'Version (tag/branch) of the generator to be used'
+        description: 'Generator tag/branch'
         required: true
         default: 'master'
       target-organization:
-        description: 'Organization, where the target repository is located in'
+        description: 'Target organization'
         required: true
         default: 'developer-experience'
       target-repository:
