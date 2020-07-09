@@ -30,7 +30,7 @@ jobs:
     - name: processing input variables
       run: | 
         echo "processing input variables"
-        if [[ "${{github.event.inputs.generator-repository}}" != "" ]];then
+        if [[ "${{github.event.inputs.generator-repository}}" != "" ]]; then
           echo "This workflow is triggered manually via event 'workflow_dispatch'"
           echo "::set-env name=target-organization::${{ github.event.inputs.generator-organization }}"
           echo "::set-env name=generator-repository::${{ github.event.inputs.generator-repository }}"
@@ -39,7 +39,11 @@ jobs:
           echo "::set-env name=target-repository::${{ github.event.inputs.target-repository }}"
         else
           echo "This workflow is triggered via event 'repo_dispatch'"
-          echo "::set-env name=target-organization::${{ github.event.client_payload.generator.organization }}"
+          if [[ "${{ github.event.client_payload.generator.organization" != ""}} ]]; then
+            echo "::set-env name=target-organization::${{ github.event.client_payload.generator.organization }}"
+          else
+            echo "::warning::field generator.organization is missing in json request"
+          fi
           echo "::set-env name=generator-repository::${{ github.event.client_payload.generator.repository }}"
           echo "::set-env name=generator-version::${{ github.event.client_payload.generator.version }}"
           echo "::set-env name=target-organization::${{ github.event.client_payload.organization }}"
