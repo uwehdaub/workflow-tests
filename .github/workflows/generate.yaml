@@ -41,7 +41,7 @@ jobs:
           if [[ "${{ github.event.client_payload.generator.organization }}" != "" ]]; then
             echo "::set-env name=target-organization::${{ github.event.client_payload.generator.organization }}"
           else
-            echo "the field generator.organization is missing from the json payload"
+            echo "::warning::the field generator.organization is missing from the json payload"
           fi
           echo "This workflow is triggered via event 'repo_dispatch'"
           echo "::set-env name=generator-repository::${{ github.event.client_payload.generator.repository }}"
