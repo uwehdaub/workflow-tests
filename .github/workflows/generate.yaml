@@ -38,16 +38,37 @@ jobs:
           echo "::set-env name=target-organization::${{ github.event.inputs.target-organization }}"
           echo "::set-env name=target-repository::${{ github.event.inputs.target-repository }}"
         else
+          echo "This workflow is triggered via event 'repo_dispatch'"
           if [[ "${{ github.event.client_payload.generator.organization }}" != "" ]]; then
             echo "::set-env name=target-organization::${{ github.event.client_payload.generator.organization }}"
           else
-            echo "::warning::the field generator.organization is missing from the json payload"
+            echo "::error::the field generator.organization is missing from the json payload"
+            exit 1
           fi
-          echo "This workflow is triggered via event 'repo_dispatch'"
-          echo "::set-env name=generator-repository::${{ github.event.client_payload.generator.repository }}"
-          echo "::set-env name=generator-version::${{ github.event.client_payload.generator.version }}"
-          echo "::set-env name=target-organization::${{ github.event.client_payload.organization }}"
-          echo "::set-env name=target-repository::${{ github.event.client_payload.repository }}"
+          if [[ "${{ github.event.client_payload.generator.repository }}" != "" ]]; then
+            echo "::set-env name=generator-repository::${{ github.event.client_payload.generator.repository }}"
+          else
+            echo "::error::the field generator.repository is missing from the json payload"
+            exit 1
+          fi
+          if [[ "${{ github.event.client_payload.generator.version }}" != "" ]]; then
+            echo "::set-env name=generator-version::${{ github.event.client_payload.generator.version }}"
+          else
+            echo "::warning::the field generator.repository is missing from the json payload (using master)"
+            echo "::set-env name=generator-version::master"
+          fi
+          if [[ "${{ github.event.client_payload.organization }}" != "" ]]; then
+            echo "::set-env name=target-organization::${{ github.event.client_payload.organization }}"
+          else
+            echo "::error::the field organization is missing from the json payload"
+            exit 1
+          fi
+          if [[ "${{ github.event.client_payload.repository }}" != "" ]]; then
+            echo "::set-env name=target-repository::${{ github.event.client_payload.repository }}"
+          else
+            echo "::error::the field repository is missing from the json payload"
+            exit 1
+          fi
         fi
     - name: using variables
       run: |
