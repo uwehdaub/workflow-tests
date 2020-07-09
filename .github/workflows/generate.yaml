@@ -42,6 +42,8 @@ jobs:
           echo "::set-env name=target-organization::${{ github.event.inputs.target-organization }}"
           echo "::set-env name=target-repository::${{ github.event.inputs.target-repository }}"
         fi
+    - name: using variables
+      run: |
         echo "merge-bot is called with the following parameters"
         echo "generator to be used"
         echo "  generator.organization: ${{ env.GEN_ORG }}"
