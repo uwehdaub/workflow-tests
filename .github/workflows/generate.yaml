@@ -39,10 +39,6 @@ jobs:
           echo "::set-env name=target-repository::${{ github.event.inputs.target-repository }}"
         else
           echo "This workflow is triggered via event 'repo_dispatch'"
-          #if [[ "${{ github.event.client_payload.generator.organization" }} != "" ]]; then
-          #else
-          #  echo "::warning::field generator.organization is missing in json request"
-          #fi
           echo "::set-env name=target-organization::${{ github.event.client_payload.generator.organization }}"
           echo "::set-env name=generator-repository::${{ github.event.client_payload.generator.repository }}"
           echo "::set-env name=generator-version::${{ github.event.client_payload.generator.version }}"
