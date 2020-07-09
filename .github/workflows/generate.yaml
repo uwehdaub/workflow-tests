@@ -32,7 +32,7 @@ jobs:
         echo "processing input variables"
         if [[ "${{github.event.inputs.generator-repository}}" != "" ]]; then
           echo "This workflow is triggered manually via event 'workflow_dispatch'"
-          echo "::set-env name=target-organization::${{ github.event.inputs.generator-organization }}"
+          echo "::set-env name=generator-organization::${{ github.event.inputs.generator-organization }}"
           echo "::set-env name=generator-repository::${{ github.event.inputs.generator-repository }}"
           echo "::set-env name=generator-version::${{ github.event.inputs.generator-version }}"
           echo "::set-env name=target-organization::${{ github.event.inputs.target-organization }}"
@@ -40,7 +40,7 @@ jobs:
         else
           echo "This workflow is triggered via event 'repo_dispatch'"
           if [[ "${{ github.event.client_payload.generator.organization }}" != "" ]]; then
-            echo "::set-env name=target-organization::${{ github.event.client_payload.generator.organization }}"
+            echo "::set-env name=generator-organization::${{ github.event.client_payload.generator.organization }}"
           else
             echo "::error::the field generator.organization is missing from the json payload"
             exit 1
@@ -74,7 +74,7 @@ jobs:
       run: |
         echo "merge-bot is called with the following parameters"
         echo "generator to be used"
-        echo "  generator.organization: ${{ env.target-organization }}"
+        echo "  generator.organization: ${{ env.generator-organization }}"
         echo "  generator.repository:   ${{ env.generator-repository }}"
         echo "  generator.version:      ${{ env.generator-version }}"
         echo "target repository to which the pull request should be applied"
