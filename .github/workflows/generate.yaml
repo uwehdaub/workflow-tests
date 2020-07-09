@@ -31,11 +31,11 @@ jobs:
       run: | 
         if [[ ${{github.event.inputs.generator-repository}} ]];then
           echo "This workflow is triggered manually"
-          echo ::set-env name=generator-organization::${{github.event.inputs.generator-organization}}
-          echo ::set-env name=generator-repository::${{github.event.inputs.generator-repository}}
-          echo ::set-env name=generator-version::${{github.event.inputs.generator-version}}
-          echo ::set-env name=target-organization::${{github.event.inputs.target-organization}}
-          echo ::set-env name=target-repository::${{github.event.inputs.target-repository}}
+          echo "::set-env name=generator-organization::${{github.event.inputs.generator-organization}}"
+          echo "::set-env name=generator-repository::${{github.event.inputs.generator-repository}}"
+          echo "::set-env name=generator-version::${{github.event.inputs.generator-version}}"
+          echo "::set-env name=target-organization::${{github.event.inputs.target-organization}}"
+          echo "::set-env name=target-repository::${{github.event.inputs.target-repository}}"
         fi
         echo "merge-bot is called with the following parameters"
         echo "generator to be used"
