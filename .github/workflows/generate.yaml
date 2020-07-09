@@ -30,7 +30,7 @@ jobs:
     - name: processing input variables
       run: | 
         echo "processing input variables"
-        if [[ ${{github.event.inputs.generator-repository}} ]];then
+        if [[ "${{github.event.inputs.generator-repository}}" != "" ]];then
           echo "This workflow is triggered manually via event 'workflow_dispatch'"
           echo "::set-env name=target-organization::${{ github.event.inputs.generator-organization }}"
           echo "::set-env name=generator-repository::${{ github.event.inputs.generator-repository }}"
