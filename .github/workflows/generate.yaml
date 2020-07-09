@@ -23,7 +23,6 @@ on:
       target-repository:
         description: 'Target repository'
         required: true
-env:
 jobs:
   generate:
     runs-on: ubuntu-latest
