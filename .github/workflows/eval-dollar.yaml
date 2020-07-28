@@ -1,4 +1,4 @@
-name: eval dolloar
+name: eval dollar
 on:
   workflow_dispatch:
 jobs:
