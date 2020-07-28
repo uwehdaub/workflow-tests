@@ -5,8 +5,8 @@ jobs:
   reproduce-problem:
     runs-on: ubuntu-latest
     steps:
-    - name: From event
-      id: Create message 
+    - name: Create message 
+      id: message 
       run: |
         message="robot$account"
         echo "=============Message============================"
