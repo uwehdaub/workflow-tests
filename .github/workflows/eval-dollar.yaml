@@ -16,5 +16,5 @@ jobs:
     - name: Display message
       run: |
         echo "=============Message============================"
-        echo "${{ steps.message.outputs.message }}"
+        echo '${{ steps.message.outputs.message }}'
         echo "=============Message============================"
