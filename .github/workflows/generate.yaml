@@ -27,9 +27,9 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
-    - name: processing input variables
+    - name: processing input values
       run: | 
-        echo "processing input variables"
+        echo "processing input values"
         if [[ "${{github.event.inputs.generator-repository}}" != "" ]]; then
           echo "This workflow is triggered manually via event 'workflow_dispatch'"
           echo "::set-env name=generator-organization::${{ github.event.inputs.generator-organization }}"
@@ -72,7 +72,7 @@ jobs:
         fi
     - name: using variables
       run: |
-        echo "merge-bot is called with the following parameters"
+        echo "merge-bot is called with the following input values"
         echo "generator to be used"
         echo "  generator.organization: ${{ env.generator-organization }}"
         echo "  generator.repository:   ${{ env.generator-repository }}"

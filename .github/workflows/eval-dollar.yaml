@@ -1,0 +1,20 @@
+name: eval dolloar
+on:
+  workflow_dispatch:
+jobs:
+  reproduce-problem:
+    runs-on: ubuntu-latest
+    steps:
+    - name: From event
+      id: Create message 
+      run: |
+        message="robot$account"
+        echo "=============Message============================"
+        echo "$message"
+        echo "=============Message============================"
+        echo "::set-output name=message::$message"
+    - name: Display message
+      run: |
+        echo "=============Message============================"
+        echo "${{ steps.message.outputs.message }}"
+        echo "=============Message============================"
