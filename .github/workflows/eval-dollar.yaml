@@ -8,7 +8,7 @@ jobs:
     - name: Create message 
       id: message 
       run: |
-        message="robot$account"
+        message='robot$account'
         echo "=============Message============================"
         echo "$message"
         echo "=============Message============================"
