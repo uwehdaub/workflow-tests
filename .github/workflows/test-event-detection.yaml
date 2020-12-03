@@ -1,0 +1,12 @@
+name: Test Event Detection
+on:
+  workflow_dispatch:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+jobs:
+  one:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo {{ $github.event }}
