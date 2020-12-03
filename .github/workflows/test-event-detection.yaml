@@ -9,4 +9,6 @@ jobs:
   one:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ github.event }}
+      - run: echo $EVENT
+        env:
+          EVENT: ${{ github.event_name }}
