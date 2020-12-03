@@ -18,3 +18,5 @@ jobs:
         if: github.event_name == 'workflow_dispatch'
       - run: echo "Here event pull_request"
         if: github.event_name == 'pull_request'
+      - run: echo "Here anything else than pull_request"
+        if: github.event_name != 'pull_request'
