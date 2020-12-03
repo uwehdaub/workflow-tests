@@ -13,8 +13,8 @@ jobs:
         env:
           EVENT: ${{ github.event_name }}
       - run: echo "Here event push"
-        if: github.event_name == "push"
+        if: github.event_name == 'push'
       - run: echo "Here event workflow_dispatch"
-        if: github.event_name == "workflow_dispatch"
+        if: github.event_name == 'workflow_dispatch'
       - run: echo "Here event pull_request"
-        if: github.event_name == "pull_request"
+        if: github.event_name == 'pull_request'
