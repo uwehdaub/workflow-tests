@@ -15,6 +15,12 @@ jobs:
   one:
     runs-on: ubuntu-latest
     steps:
-      - run: |
+      - 
+        id: compare output
+        run: |
           echo "'${{ github.event.inputs.name }}'"
           echo "'${{ github.event.inputs.name_with_blanks }}'"
+          old = $(echo "${{ github.event.inputs.name_with_blanks }}")
+          new = $(echo "${{ github.event.inputs.name_with_blanks }}" | sed 's/^[[:blank:]]*//;s/[[:blank:]]*$//')
+          echo "'$old'"
+          echo "'$new'"
