@@ -1,4 +1,4 @@
-name: Test Event Detection
+name: Event Detection
 on:
   workflow_dispatch:
   push:
