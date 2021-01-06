@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - 
-        id: compare output
+        id: compare_output
         run: |
           echo "'${{ github.event.inputs.name }}'"
           echo "'${{ github.event.inputs.name_with_blanks }}'"
