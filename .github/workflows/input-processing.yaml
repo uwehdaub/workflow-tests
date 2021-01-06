@@ -16,5 +16,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo "${{ github.event.inputs.name }}"
-          echo "${{ github.event.inputs.name_with_blanks }}"
+          echo "'${{ github.event.inputs.name }}'"
+          echo "'${{ github.event.inputs.name_with_blanks }}'"
