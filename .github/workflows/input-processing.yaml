@@ -1,0 +1,20 @@
+name: Test Event Detection
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: A name
+        required: true
+        default: 'Uwe Daub'
+      name_with_blanks:
+        description: A name with leading and trailing blanks
+        required: true
+        default: ' Uwe Daub '
+
+jobs:
+  one:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "${{ github.event.inputs.name }}"
+          echo "${{ github.event.inputs.name_with_blanks }}"
